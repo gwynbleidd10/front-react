@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useHttp } from '../hooks/http.hook';
-import Table from '../components/Table';
 import { MDBDataTable } from 'mdbreact';
 
 export const StatusPage = () => {
@@ -17,6 +16,13 @@ export const StatusPage = () => {
         if (props.loading) {
             return <div>Loading...</div>
         }
+        let url;
+        if (process.env.NODE_ENV == 'production') {
+            url = "http://botsnode.herokuapp.com/api/esed/status"
+        }
+        else {
+            url = "/api/esed/status"
+        }
 
         return (
             <MDBDataTable
@@ -24,7 +30,7 @@ export const StatusPage = () => {
                 barReverse={true}
                 entries={20}
                 entriesLabel="Записей на страницу"
-                data="/api/esed/status"
+                data={url}
             />
         )
     }
