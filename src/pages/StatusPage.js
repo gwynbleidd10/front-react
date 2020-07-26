@@ -18,7 +18,7 @@ export const StatusPage = () => {
         }
         let url;
         if (process.env.NODE_ENV == 'production') {
-            url = "http://botsnode.herokuapp.com/api/esed/status"
+            url = "https://botsnode.herokuapp.com/api/esed/status"
         }
         else {
             url = "/api/esed/status"
